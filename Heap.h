@@ -66,13 +66,14 @@ public:
 	}
 
 protected:
+	// rearrange the heap while adding new child from smallest to biggest
 	void _AdjustUp(int child)
 	{
 		int parent = (child - 1) / 2;
 
 		while (parent >= 0)
 		{
-			//ÕÒ³öº¢×ÓÖÐµÄ×î´óº¢×Ó
+			//æ‰¾å‡ºå­©å­ä¸­çš„æœ€å¤§å­©å­
 			if (_a[child] > _a[parent])
 			{
 				swap(_a[child], _a[parent]);
@@ -86,19 +87,19 @@ protected:
 		}
 
 	}
-
+	// rearrange the heap while adding new child from biggest to smallest
 	void _AdjustDown(size_t parent)
 	{
 		size_t child = 2 * parent + 1;
 
 		while (child < _a.size())
 		{
-			//ÕÒ³öº¢×ÓÖÐµÄ×î´óº¢×Ó
+			//æ‰¾å‡ºå­©å­ä¸­çš„æœ€å¤§å­©å­
 			if (child + 1 < _a.size() && _a[child] < _a[child + 1])
 			{
 				++child;
 			}
-			//°Ñ
+			//æŠŠ
 			if (_a[parent] < _a[child])
 			{
 				swap(_a[parent], _a[child]);
